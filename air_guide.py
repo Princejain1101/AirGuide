@@ -5,28 +5,6 @@ import streamlit as st
 from agno.models.openai import OpenAIChat
 from parameters import set_png_as_page_bg, airlines_list, set_bg_hack_url
 
-# set_png_as_page_bg('airline_background.png')
-# st.markdown(
-#     """
-#     <style>
-#     .reportview-container {
-#         background: url("https://images.unsplash.com/photo-1542281286-9e0a16bb7366")
-#     }
-#    .sidebar .sidebar-content {
-#         background: url("https://images.unsplash.com/photo-1542281286-9e0a16bb7366")
-#     }
-#     </style>
-#     """,
-#     unsafe_allow_html=True
-# )
-# with st.echo():
-# st.markdown("[![Click me](airline_background2.jpeg)](https://streamlit.io)")
-#
-# # with st.echo():
-# st.markdown(
-#     '<img src="airline_background2.jpeg" height="333" style="border: 5px solid orange">',
-#     unsafe_allow_html=True,
-# )# Set up the Streamlit app
 set_bg_hack_url()
 st.title("AI Air Guide ✈️")
 st.subheader("Enjoy smooth and well prepared travel!")
@@ -65,7 +43,7 @@ if openai_api_key and serp_api_key:
 
     baggage, transit, terminal = st.tabs(["Baggage", "Transit", "Terminal"])
     with baggage:
-        airline = st.selectbox("Which airline do you wish to travel?", airlines_list, index=None)
+        airline = st.selectbox("Which airline do you wish to travel with?", airlines_list, index=None)
         domestic = st.radio("Are you traveling domestic or international?", ["Domestic", "International"])
         if st.button("Get Baggage information"):
             with st.spinner("Getting Baggage information..."):
