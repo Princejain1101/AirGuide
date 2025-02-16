@@ -3,7 +3,7 @@ from agno.agent import Agent
 from agno.tools.serpapi import SerpApiTools
 import streamlit as st
 from agno.models.openai import OpenAIChat
-from parameters import set_png_as_page_bg, airlines_list, set_bg_hack_url, countries_list, cities_list
+from parameters import airlines_list, set_bg_hack_url, countries_list, cities_list
 
 set_bg_hack_url()
 st.title(":blue[AI Air Guide] ✈️")
