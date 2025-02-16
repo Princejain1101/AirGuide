@@ -1,7 +1,7 @@
 import streamlit as st
 from agno.models.openai import OpenAIChat
 from parameters import airlines_list, set_bg_hack_url, countries_list, cities_list
-from agents import transitguide, terminalguide, airlineguide, openai_api_key, serp_api_key
+from agents import transitguide, terminalguide, baggageguide, openai_api_key, serp_api_key
 
 set_bg_hack_url()
 st.title(":blue[AI Air Guide] ✈️")
@@ -15,7 +15,7 @@ if openai_api_key and serp_api_key:
         domestic = st.radio(":gray[Are you traveling domestic or international?]", [":gray[Domestic]", ":gray[International]"])
         if st.button(":gray[Get Baggage information]"):
             with st.spinner(":gray[Getting Baggage information...]"):
-                response = airlineguide.run(f"with {airline} travelling {domestic} and getting baggage information for checked bad, carry-on bag with weight and count limit", stream=False)
+                response = baggageguide.run(f"with {airline} travelling {domestic} and getting baggage information for checked bad, carry-on bag with weight and count limit", stream=False)
                 st.write(response.content)
     with transit:
         city = st.selectbox(":gray[Which is the layover city?]", cities_list, index=None)
