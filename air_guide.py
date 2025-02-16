@@ -6,8 +6,8 @@ from agno.models.openai import OpenAIChat
 from parameters import set_png_as_page_bg, airlines_list, set_bg_hack_url
 
 set_bg_hack_url()
-st.title("AI Air Guide ✈️")
-st.subheader("Enjoy smooth and well prepared travel!")
+st.title(":blue[AI Air Guide] ✈️")
+st.subheader(":green[Enjoy smooth and well prepared travel!]")
 
 # Get OpenAI API key from user
 openai_api_key = st.secrets["openai_api_key"]
@@ -41,12 +41,12 @@ if openai_api_key and serp_api_key:
         add_datetime_to_instructions=True,
     )
 
-    baggage, transit, terminal = st.tabs(["Baggage", "Transit", "Terminal"])
+    baggage, transit, terminal = st.tabs([":gray[Baggage]", ":gray[Transit]", ":gray[Terminal]"])
     with baggage:
-        airline = st.selectbox("Which airline do you wish to travel with?", airlines_list, index=None)
-        domestic = st.radio("Are you traveling domestic or international?", ["Domestic", "International"])
-        if st.button("Get Baggage information"):
-            with st.spinner("Getting Baggage information..."):
+        airline = st.selectbox(":gray[Which airline do you wish to travel with?]", airlines_list, index=None)
+        domestic = st.radio(":gray[Are you traveling domestic or international?]", [":gray[Domestic]", ":gray[International]"])
+        if st.button(":gray[Get Baggage information]"):
+            with st.spinner(":gray[Getting Baggage information...]"):
                 response = airlineguide.run(f"with {airline} travelling {domestic} and getting baggage information for checked bad, carry-on bag with weight and count limit", stream=False)
                 st.write(response.content)
 
